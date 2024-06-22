@@ -20,6 +20,15 @@ RUN sudo usermod --append --groups video $USERNAME
 # Update all packages
 RUN sudo apt update && sudo apt upgrade -y
 
+# Install Rviz
+RUN sudo apt-get install ros-noetic-rviz
+
+# Install Gazebo
+RUN sudo apt-get install ros-noetic-gazebo-ros-pkgs ros-noetic-gazebo-ros-control -y
+
+# Install Gazebo for development
+RUN sudo apt-get install -y libgazebo11-dev
+
 # Install Git
 RUN sudo apt install -y git
 
