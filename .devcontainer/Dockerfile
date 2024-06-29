@@ -18,7 +18,15 @@ USER $USERNAME
 RUN sudo usermod --append --groups video $USERNAME
 
 # Update all packages
-RUN sudo apt update && sudo apt upgrade -y
+RUN sudo apt-get update
+
+RUN sudo apt upgrade -y
+
+# Install Git
+RUN sudo apt install -y git
+
+# Install Catkin
+RUN sudo apt-get install python3-catkin-tools -y
 
 # Install Rviz
 RUN sudo apt-get install ros-noetic-rviz
@@ -28,9 +36,6 @@ RUN sudo apt-get install ros-noetic-gazebo-ros-pkgs ros-noetic-gazebo-ros-contro
 
 # Install Gazebo for development
 RUN sudo apt-get install -y libgazebo11-dev
-
-# Install Git
-RUN sudo apt install -y git
 
 # Rosdep update
 RUN rosdep update
